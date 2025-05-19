@@ -1,10 +1,19 @@
-<div class=container>
+<div class="container">
+  <!-- TODO: apply css -->
   <% @spaceships.each do |spaceship| %>
-    <p><%= @spaceship.name %></p>
-    <p><%= @spaceship.price %></p>
-    <p><%= @spaceship.max_speed %></p>
-    <p><%= @spaceship.user %></p>
-    <%= link_to "Reserve the spaceship ", "new_spaceship_path" %>
-    <%= link_to "Back to top", "spaceships_path" %>
+    <div class="card-trip">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= @spaceship.name %></h2>
+          <p><%= @spaceship.max_speed %></p>
+          <p><%= @spaceship.user %></p>
+        </div>
+        <h2 class="card-trip-pricing">$<%= @spaceship.price %></h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
   <% end  %>
+  <%= link_to "Reserve the spaceship ", "new_spaceship_path" %>
+  <%= link_to "Back to top", "spaceships_path" %>
 </div>
