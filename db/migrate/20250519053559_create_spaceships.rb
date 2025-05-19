@@ -3,7 +3,7 @@ class CreateSpaceships < ActiveRecord::Migration[7.1]
     create_table :spaceships do |t|
       t.string :name
       t.integer :price
-      t.integer :max-speed
+      t.integer :max_speed
       t.references :user, null: false, foreign_key: true
       t.string :size
 
