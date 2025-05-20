@@ -1,11 +1,11 @@
 
 
-<h1>🚀 Spaceship Showroom</h1>
+<h1 class="px-5 mt-5 mb-5">🚀 Spaceship Showroom</h1>
 
 
 <% if @spaceships.any? %>
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-    <%= render partial: "spaceships/card", collection: @spaceships, as: :spaceship %>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 px-5">
+    <%= render partial: "partials/card", collection: @spaceships, as: :spaceship %>
   </div>
 <% else %>
   <p>No spaceships available yet.</p>
