@@ -94,6 +94,20 @@ bookings = [
     start_date: Date.today + 3,
     end_date: Date.today + 7,
     total_price: 300_000
+  },
+    {
+    spaceship: Spaceship.find_by(name: "Eagle 5"),
+    user: booker,
+    start_date: Date.today - 20,
+    end_date: Date.today - 15,
+    total_price: 28_000
+  },
+      {
+    spaceship: Spaceship.find_by(name: "Event Horizon"),
+    user: booker,
+    start_date: Date.today - 98,
+    end_date: Date.today - 94,
+    total_price: 1_200_000_000
   }
 ]
 

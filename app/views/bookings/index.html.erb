@@ -1,20 +1,12 @@
-<div class=container>
-  <!-- show all bookings of the user -->
-  <h2><%= link_to "Homepage", spaceships_path %></h2>
-  <div class="upcoming-booking">
-    <h1>Upcoming Bookings</h1>
-    <% @upcoming_bookings.each do |booking| %>
-      <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, width: 200 %>
-      <p><%= booking.spaceship.name %></p>
-      <p><%= booking.start_date %> ~ <%= booking.end_date %></p>
-    <% end %>
-  </div>
-  <div class="past-booking">
-    <h1>Past Bookings</h1>
-    <% @past_bookings.each do |booking| %>
-      <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, width: 200 %>
-      <p><%= booking.spaceship.name %></p>
-      <p><%= booking.start_date %> ~ <%= booking.end_date %></p>
-    <% end %>
-  </div>
+<h1>Upcoming Bookings</h1>
+<div class="row">
+  <% @upcoming_bookings.each do |booking| %>
+    <%= render partial: "bookings/card", locals: { booking: booking } %>
+  <% end %>
+</div>
+<h1>Past Bookings</h1>
+<div class="row">
+  <% @past_bookings.each do |booking| %>
+    <%= render partial: "bookings/card", locals: { booking: booking } %>
+  <% end %>
 </div>

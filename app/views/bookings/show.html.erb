@@ -1,7 +1,11 @@
 <div class="container">
-  <% @bookings.each do |booking| %>
-    <p>Spaceship: <%= booking.spaceship.name %></p>
-    <p>Duration: <%= booking.start_date %> ~ <%= booking.end_date %></p>
-    <p>Total: <%= booking.total_price %></p>
-  <% end %>
+  <div>
+    <%= image_tag @booking.spaceship.photo, alt: @booking.spaceship.name, class: "card-img-top rounded-4 my-3", style: "width: 200px; object-fit: cover;" %>
+    <p><strong>Booking ID: </strong><%= @booking.id %></p>
+    <p><strong>Spaceship: </strong>
+      <%= link_to @booking.spaceship.name, spaceship_path(@booking.spaceship) %></p>
+    <p><strong>Duration: </strong><%= @booking.start_date %> ~ <%= @booking.end_date %></p>
+    <p><strong>Total: </strong><%= @booking.total_price %></p>
+  </div>
+  <%= link_to "Back to my bookings", bookings_path %>
 </div>
