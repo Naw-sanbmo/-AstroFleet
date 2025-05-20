@@ -64,3 +64,41 @@ spaceships.each do |attrs|
 end
 
 puts "🌌 Seeded #{Spaceship.count} spaceships for Commander #{owner.first_name} #{owner.last_name}"
+
+# Pick one booker to keep things simple
+booker = User.create!(
+  first_name: "Han",
+  last_name: "Solo",
+  email: "han@falcon.space",
+  password: "password123"
+)
+
+bookings = [
+  {
+    spaceship: Spaceship.find_by(name: "Enterprise"),
+    user: booker,
+    start_date: Date.today + 1,
+    end_date: Date.today + 5,
+    total_price: 200_000
+  },
+  {
+    spaceship: Spaceship.find_by(name: "Death Star"),
+    user: booker,
+    start_date: Date.today + 10,
+    end_date: Date.today + 12,
+    total_price: 1_000_000
+  },
+  {
+    spaceship: Spaceship.find_by(name: "Millennium Falcon"),
+    user: booker,
+    start_date: Date.today + 3,
+    end_date: Date.today + 7,
+    total_price: 300_000
+  }
+]
+
+bookings.each do |attrs|
+  Booking.create!(attrs)
+end
+
+puts "📅 Seeded #{Booking.count} spaceship bookings for #{booker.first_name} #{booker.last_name}"
