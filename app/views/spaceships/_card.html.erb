@@ -1,0 +1,15 @@
+<div class="col">
+  <div class="card h-100 p-3">
+    <%= image_tag(
+          spaceship.photo.present? ? spaceship.photo : "https://res.cloudinary.com/demo/image/upload/v1680000000/default_ship.jpg",
+          class: "card-img-top mb-2",
+          alt: "#{spaceship.name} photo"
+        ) %>
+
+    <h5><%= spaceship.name %></h5>
+    <p><strong>Price:</strong> ¥<%= spaceship.price %></p>
+    <p><strong>Speed:</strong> <%= spaceship.max_speed %> km/h</p>
+    <p><strong>Size:</strong> <%= spaceship.size.capitalize %></p>
+    <%= link_to 'View Details', spaceship_path(spaceship), class: 'btn btn-primary mt-2' %>
+  </div>
+</div>

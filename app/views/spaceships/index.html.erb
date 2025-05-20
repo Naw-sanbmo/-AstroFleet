@@ -1,21 +1,9 @@
-
 <h1>🚀 Spaceship Showroom</h1>
 
 <% if @spaceships.any? %>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-    <% @spaceships.each do |spaceship| %>
-      <div class="col">
-        <div class="card h-100 p-3">
-          <h5><%= spaceship.name %></h5>
-          <p><strong>Price:</strong> ¥<%= spaceship.price %></p>
-          <p><strong>Speed:</strong> <%= spaceship.max_speed %> km/h</p>
-          <p><strong>Size:</strong> <%= spaceship.size.capitalize %></p>
-          <%= link_to 'View Details', spaceship_path(spaceship), class: 'btn btn-primary mt-2' %>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: "spaceships/card", collection: @spaceships, as: :spaceship %>
   </div>
 <% else %>
   <p>No spaceships available yet.</p>
 <% end %>
-
