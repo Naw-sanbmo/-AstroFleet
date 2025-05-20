@@ -4,7 +4,7 @@
   <div class="upcoming-booking">
     <h1>Upcoming Bookings</h1>
     <% @upcoming_bookings.each do |booking| %>
-      <!-- TODO: show spaceship photo here -->
+      <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, width: 200 %>
       <p><%= booking.spaceship.name %></p>
       <p><%= booking.start_date %> ~ <%= booking.end_date %></p>
     <% end %>
@@ -12,7 +12,7 @@
   <div class="past-booking">
     <h1>Past Bookings</h1>
     <% @past_bookings.each do |booking| %>
-      <!-- TODO: show spaceship photo here -->
+      <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, width: 200 %>
       <p><%= booking.spaceship.name %></p>
       <p><%= booking.start_date %> ~ <%= booking.end_date %></p>
     <% end %>
