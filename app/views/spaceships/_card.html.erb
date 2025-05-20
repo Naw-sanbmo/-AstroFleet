@@ -10,7 +10,7 @@
     <div class="card-body d-flex flex-column">
       <h5 class="card-title mb-2"><%= spaceship.name %></h5>
 
-      <p class="mb-1"><strong>Price:</strong> ¥<%= number_with_delimiter(spaceship.price) %></p>
+      <p class="mb-1"><strong>Price:</strong> $<%= number_with_delimiter(spaceship.price) %></p>
       <p class="mb-1"><strong>Speed:</strong> <%= number_with_delimiter(spaceship.max_speed) %> km/h</p>
       <p class="mb-3"><strong>Size:</strong> <%= spaceship.size.capitalize %></p>
 
