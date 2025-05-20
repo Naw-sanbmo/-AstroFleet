@@ -4,8 +4,13 @@ class SpaceshipsController < ApplicationController
 
   # for the renters
   def index
-    @spaceships = Spaceship.all
+    if params[:query].present?
+      @spaceships = Spaceship.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @spaceships = Spaceship.all
+    end
   end
+
 
   def show
     @booking = Booking.new
