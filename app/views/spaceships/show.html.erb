@@ -1,21 +1,14 @@
+<div class="container bg-secondary rounded">
+  <%= link_to '<< Spaceship showroom', spaceships_path, class: 'text-decoration-none text-info' %>
+  <div class="card-trip">
+    <div>
+      <p><%= @spaceship.photo %></p>
+      <h2>Your Spaceship 🛸 ➪ <%= @spaceship.name %></h2>
+      <p>Maximum Speed 🚀 ➪ <%= @spaceship.max_speed %></p>
+      <p>Size 👨🏼‍🚀 ➪ <%= @spaceship.size %></p>
+      <p>Price 💵 ➪ <%= @spaceship.price %> /day</p>
+    </div>
+  </div>
+  <%= render "spaceships/form", spaceship: @spaceship, booking: @booking%>
 
 <div class="container">
-  <!-- TODO: apply css -->
-  <% @spaceships.each do |spaceship| %>
-    <div class="card-trip">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= @spaceship.name %></h2>
-          <p><%= @spaceship.max_speed %></p>
-          <p><%= @spaceship.user %></p>
-        </div>
-        <h2 class="card-trip-pricing">$<%= @spaceship.price %></h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-      </div>
-    </div>
-  <% end  %>
-  <%= link_to "Reserve the spaceship ", "new_spaceship_path" %>
-  <%= link_to "Back to top", "spaceships_path" %>
-</div>
-
