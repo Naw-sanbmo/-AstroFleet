@@ -1,8 +1,7 @@
 <div class="container">
   <% @bookings.each do |booking| %>
-  <p><%= booking.spaceship.name %></p>
-  <p><%= booking.user.name %></p>
-  <p><%= booking.start_date %> ~ <%= booking.end_date %></p>
-  <p>Total: <%= booking.total_price %></p>
+    <p><%= booking.spaceship.name %></p>
+    <p><%= booking.start_date %> ~ <%= booking.end_date %></p>
+    <p>Total: <%= booking.total_price %></p>
   <% end %>
 </div>
