@@ -4,6 +4,9 @@
   a {
     color: white;
   }
+  a:hover {
+    color: $purple;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
