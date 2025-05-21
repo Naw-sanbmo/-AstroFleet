@@ -1,6 +1,7 @@
 require "open-uri"
 
 puts "🧹 Clearing database..."
+Booking.destroy_all
 Spaceship.destroy_all
 User.destroy_all
 
@@ -77,36 +78,39 @@ spaceships = [
   }
 ]
 
-
 spaceships.each do |attrs|
-  file = URI.parse(attrs[:photo_url]).open
+  begin
+    file = URI.open(attrs[:photo_url])
+    spaceship = Spaceship.new(
+      name: attrs[:name],
+      price: attrs[:price],
+      max_speed: attrs[:max_speed],
+      size: attrs[:size],
+      features: attrs[:features],
+      description: attrs[:description],
+      rating: attrs[:rating],
+      user: owner
+    )
 
-  spaceship = Spaceship.new(
-    name: attrs[:name],
-    price: attrs[:price],
-    max_speed: attrs[:max_speed],
-    size: attrs[:size],
-    features: attrs[:features],
-    description: attrs[:description],
-    rating: attrs[:rating],
-    user: owner
-  )
+    spaceship.photo.attach(
+      io: file,
+      filename: "#{attrs[:name].parameterize}.png",
+      content_type: "image/png"
+    )
 
-  spaceship.photo.attach(
-    io: file,
-    filename: "#{attrs[:name].parameterize}.png",
-    content_type: "image/png"
-  )
-
-  spaceship.save
-
-  puts "✅ Created #{spaceship.name}"
+    if spaceship.save
+      puts "✅ Created #{spaceship.name}"
+    else
+      puts "❌ Failed to save #{attrs[:name]}: #{spaceship.errors.full_messages.join(', ')}"
+    end
+  rescue => e
+    puts "⚠️ Error loading image for #{attrs[:name]}: #{e.message}"
+  end
 end
 
 puts "🌌 Finished seeding #{Spaceship.count} spaceships for Commander #{owner.first_name} #{owner.last_name}"
 
-
-# Pick one booker to keep things simple
+# Create one booker for all bookings
 booker = User.create!(
   first_name: "Han",
   last_name: "Solo",
@@ -119,41 +123,43 @@ bookings = [
     spaceship: Spaceship.find_by(name: "Enterprise"),
     user: booker,
     start_date: Date.today + 1,
-    end_date: Date.today + 5,
-    total_price: 200_000
+    end_date: Date.today + 5
   },
   {
     spaceship: Spaceship.find_by(name: "Death Star"),
     user: booker,
     start_date: Date.today + 10,
-    end_date: Date.today + 12,
-    total_price: 1_000_000
+    end_date: Date.today + 12
   },
   {
     spaceship: Spaceship.find_by(name: "Millennium Falcon"),
     user: booker,
     start_date: Date.today + 3,
-    end_date: Date.today + 7,
-    total_price: 300_000
+    end_date: Date.today + 7
   },
-    {
+  {
     spaceship: Spaceship.find_by(name: "Eagle 5"),
     user: booker,
     start_date: Date.today - 20,
-    end_date: Date.today - 15,
-    total_price: 28_000
+    end_date: Date.today - 15
   },
-      {
+  {
     spaceship: Spaceship.find_by(name: "Event Horizon"),
     user: booker,
     start_date: Date.today - 98,
-    end_date: Date.today - 94,
-    total_price: 1_200_000_000
+    end_date: Date.today - 94
   }
 ]
 
 bookings.each do |attrs|
-  Booking.create!(attrs)
+  days = (attrs[:end_date] - attrs[:start_date]).to_i
+  booking = Booking.new(attrs)
+  booking.total_price = booking.spaceship.price * days
+  booking.save!
 end
 
 puts "📅 Seeded #{Booking.count} spaceship bookings for #{booker.first_name} #{booker.last_name}"
+puts "\n🧾 Summary:"
+puts "Users: #{User.count}"
+puts "Spaceships: #{Spaceship.count}"
+puts "Bookings: #{Booking.count}"
