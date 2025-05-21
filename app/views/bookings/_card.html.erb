@@ -1,7 +1,7 @@
-<div class="card col-3 mb-3 p-3 rounded-4 shadow-sm">
+<div class="card col-3 mb-3 p-3 rounded-4">
   <%= link_to booking_path(booking), class: "text-decoration-none" do %>
-    <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, class: "card-img-top rounded-4", style: "width: 200px; object-fit: cover;" %>
-    <div class="card-body mt-3">
+    <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, class: "rounded-4", style: "width: 200px; object-fit: cover;" %>
+    <div class="card-body">
       <h5 class="card-title"><%= booking.spaceship.name %></h5>
     <% end %>
     <p class="card-text">
