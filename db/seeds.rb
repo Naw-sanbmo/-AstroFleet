@@ -8,6 +8,8 @@ owner = User.create!(
   password: "password123"
 )
 
+
+
 spaceships = [
   {
     name: "Enterprise",
