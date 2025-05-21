@@ -1,10 +1,30 @@
 class BookingsController < ApplicationController
   def index
-    @upcoming_bookings = Booking.where("start_date >= ?", Date.current).order(:start_date)
-    @past_bookings = Booking.where("start_date < ?", Date.current).order(start_date: :desc)
+    # TODO: the where statements are not working
+    @upcoming_bookings = current_user.bookings # .where("start_date >= ?", Date.current).order(:start_date)
+    @past_bookings = current_user.bookings.where("start_date < ?", Date.current).order(start_date: :desc)
   end
 
   def show
     @booking = Booking.find(params[:id])
+  end
+
+  def create
+    @spaceship = Spaceship.find(params[:spaceship_id])
+    @booking = Booking.new(booking_params)
+    @booking.spaceship = @spaceship
+    @booking.user = current_user
+    if @booking.save
+      redirect_to bookings_path
+    else
+      raise
+      render "spaceships/show", status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
