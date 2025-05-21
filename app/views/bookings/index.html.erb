@@ -1,5 +1,5 @@
-<h1>Upcoming Bookings</h1>
-<div class="row">
+<h1 class="mt-3">Upcoming Bookings</h1>
+<div class="row mb-3 p-3">
   <% if @upcoming_bookings.any? %>
     <% @upcoming_bookings.each do |booking| %>
       <%= render partial: "bookings/card", locals: { booking: booking } %>
@@ -8,8 +8,8 @@
     <p>No upcoming bookings.</p>
   <% end %>
 </div>
-<h1>Past Bookings</h1>
-<div class="row">
+<h1 class="mt-3">Past Bookings</h1>
+<div class="row mb-3 p-3">
   <% if @upcoming_bookings.any? %>
     <% @past_bookings.each do |booking| %>
       <%= render partial: "bookings/card", locals: { booking: booking } %>
