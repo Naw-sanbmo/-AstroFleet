@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: "spaceships#index"
+  root to: "pages#home"
 
   resources :spaceships, only: [:index, :show, :new, :create]
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  
+
   resources :bookings, only: [:index, :show]
 
 end
