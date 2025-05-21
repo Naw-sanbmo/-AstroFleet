@@ -1,6 +1,7 @@
 require "open-uri"
 
 puts "🧹 Clearing database..."
+Booking.destroy_all
 Spaceship.destroy_all
 User.destroy_all
 
@@ -129,13 +130,13 @@ bookings = [
     end_date: Date.today + 12,
     total_price: 1_000_000
   },
-  {
-    spaceship: Spaceship.find_by(name: "Millennium Falcon"),
-    user: booker,
-    start_date: Date.today + 3,
-    end_date: Date.today + 7,
-    total_price: 300_000
-  },
+  # {
+  #   spaceship: Spaceship.find_by(name: "Millennium Falcon"),
+  #   user: booker,
+  #   start_date: Date.today + 3,
+  #   end_date: Date.today + 7,
+  #   total_price: 300_000
+  # },
     {
     spaceship: Spaceship.find_by(name: "Eagle 5"),
     user: booker,
