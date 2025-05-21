@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_21_044531) do
     t.bigint "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.integer "status", default: 0, null: false
     t.index ["spaceship_id"], name: "index_bookings_on_spaceship_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
