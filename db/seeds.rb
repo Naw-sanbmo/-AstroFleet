@@ -1,62 +1,63 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-# Clear out old data first (optional)
-# Clear existing records (optional in development)
 Spaceship.destroy_all
 User.destroy_all
 
-# Create demo owner
 owner = User.create!(
   first_name: "Buzz",
   last_name: "Lightyear",
   email: "buzz@starfleet.com",
-  password: "password123"  # Required by Devise
+  password: "password123"
 )
 
-# Create some spaceships
+
+
 spaceships = [
   {
-    name: "Falcon X9",
-    price: 120_000,
-    max_speed: 30_000,
+    name: "Enterprise",
+    price: 1_200_000,
+    max_speed: 300_000,
     size: "large",
-    features: "Hyperdrive, Auto-Docking, Hologram Interface"
+    features: "Holodeck, Warp drive, Saucer separation, Replicators, Photon torpedoes, Android crew member",
+    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Enterprise_u036lv.jpg"
   },
   {
-    name: "Nebula Skimmer",
-    price: 85_000,
+    name: "Death Star",
+    price: 2_147_483_647,
     max_speed: 24_000,
-    size: "medium",
-    features: "Cloaking system, AI pilot, Gravity stabilizer"
+    size: "huge",
+    features: "Planet-destroying superlaser, Thermal exhaust vent, Droid command center, Tractor beam array",
+    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Death_Star_um6qyo.jpg"
   },
   {
-    name: "Solar Whisper",
-    price: 45_000,
-    max_speed: 18_000,
-    size: "small",
-    features: "Minimalist pod, Solar sail, Compact living module"
+    name: "Event Horizon",
+    price: 1_200_000_000,
+    max_speed: 500_000,
+    size: "experimental cruiser",
+    features: "Gravity drive, Hull breach mode, Distress beacon, Interdimensional travel, Crew-induced madness",
+    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Event_Horizon_s0tta4.jpg"
   },
   {
-    name: "Cosmic Chariot",
-    price: 110_000,
-    max_speed: 27_000,
-    size: "large",
-    features: "Luxury cabin, Laser turrets, Party dome"
+    name: "USCSS Nostromo",
+    price: 42_000_000,
+    max_speed: 153_300,
+    size: "hauler-class",
+    features: "Towing rig, AI mainframe (MU-TH-UR 6000), Cryosleep pods, Industrial refinery, Xenomorph passenger",
+    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Nostromo_wjlozk.jpg"
   },
   {
-    name: "Asteroid Hopper",
-    price: 32_000,
-    max_speed: 15_000,
-    size: "small",
-    features: "Tight maneuvering, Light armor, Compact scanner"
+    name: "Eagle 5",
+    price: 28_000,
+    max_speed: 150_000,
+    size: "Space Winnebago",
+    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717590/Eagle_5_bfey5t.webp"
+  },
+  {
+    name: "Millennium Falcon",
+    price: 15_000_000,
+    max_speed: 350_000,
+    size: "YT-1300 light freighter",
+    features: "Smuggling compartments, Quad laser turrets, Hyperdrive (when it works), Holo-chess table, Kessel Run record",
+    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Millenium_Falcon_fc1bsk.jpg"
   }
 ]
 
@@ -65,3 +66,41 @@ spaceships.each do |attrs|
 end
 
 puts "🌌 Seeded #{Spaceship.count} spaceships for Commander #{owner.first_name} #{owner.last_name}"
+
+# Pick one booker to keep things simple
+booker = User.create!(
+  first_name: "Han",
+  last_name: "Solo",
+  email: "han@falcon.space",
+  password: "password123"
+)
+
+bookings = [
+  {
+    spaceship: Spaceship.find_by(name: "Enterprise"),
+    user: booker,
+    start_date: Date.today + 1,
+    end_date: Date.today + 5,
+    total_price: 200_000
+  },
+  {
+    spaceship: Spaceship.find_by(name: "Death Star"),
+    user: booker,
+    start_date: Date.today + 10,
+    end_date: Date.today + 12,
+    total_price: 1_000_000
+  },
+  {
+    spaceship: Spaceship.find_by(name: "Millennium Falcon"),
+    user: booker,
+    start_date: Date.today + 3,
+    end_date: Date.today + 7,
+    total_price: 300_000
+  }
+]
+
+bookings.each do |attrs|
+  Booking.create!(attrs)
+end
+
+puts "📅 Seeded #{Booking.count} spaceship bookings for #{booker.first_name} #{booker.last_name}"

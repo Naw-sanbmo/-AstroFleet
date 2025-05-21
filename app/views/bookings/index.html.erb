@@ -1,5 +1,20 @@
 <div class=container>
   <!-- show all bookings of the user -->
-  <% @bookings.each do |booking| %>
-  <% end %>
+  <h2><%= link_to "Homepage", spaceships_path %></h2>
+  <div class="upcoming-booking">
+    <h1>Upcoming Bookings</h1>
+    <% @upcoming_bookings.each do |booking| %>
+      <!-- TODO: show spaceship photo here -->
+      <p><%= booking.spaceship.name %></p>
+      <p><%= booking.start_date %> ~ <%= booking.end_date %></p>
+    <% end %>
+  </div>
+  <div class="past-booking">
+    <h1>Past Bookings</h1>
+    <% @past_bookings.each do |booking| %>
+      <!-- TODO: show spaceship photo here -->
+      <p><%= booking.spaceship.name %></p>
+      <p><%= booking.start_date %> ~ <%= booking.end_date %></p>
+    <% end %>
+  </div>
 </div>

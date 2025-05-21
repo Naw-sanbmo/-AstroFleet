@@ -1,5 +1,8 @@
-<%= simple_form_for @booking do |f| %>
-  f.input :first_name
-  f.input :last-first_name
-  f
-<% end %>
+<div>
+  <%= simple_form_for booking do |f| %>
+    <%= f.input :start_date, label: 'Choose rental duration' , as: :string,
+                input_html: { data: { controller: "datepicker" } }%>
+    <%= f.input :total_price %>
+    <%= f.submit "Book your Spaceship", class: 'btn btn-primary mt-3'%>
+  <% end %>
+</div>

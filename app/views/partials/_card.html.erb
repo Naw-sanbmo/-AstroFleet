@@ -1,5 +1,5 @@
 <div class="card card-spaceship" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <%# <%= cl_image_tag spaceship.photo.attached? ? spaceship.photo.key : "https://res.cloudinary.com/demo/image/upload/v1680000000/default_ship.jpg", height: 300, width: 400, crop: :fill %>
   <div class="card-body">
     <h5 class="card-title">Millennium Falcon</h5>
     <p class="card-text">Price: ₮ 10,000/day</p>
