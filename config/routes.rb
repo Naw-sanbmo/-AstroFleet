@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :spaceships, only: [:index, :show, :new, :create]
+  resources :spaceships, only: [:index, :show, :new, :create] do
+    resources :bookings, only: [:create]
+  end
 
   namespace :owner do
     resources :spaceships, only: [:edit, :update, :destroy]

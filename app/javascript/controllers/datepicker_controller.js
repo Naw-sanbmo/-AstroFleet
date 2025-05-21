@@ -7,20 +7,20 @@ export default class extends Controller {
   static targets = ["startDate", "endDate"]
 
   connect() {
-    this.startPicker = flatpickr(this.startDateTarget, {
-      altInput: true,
-      altFormat: "Y, F j",
-      dateFormat: "Y-m-d",
-      minDate: "today",
-      onChange: this.updateEndDateMin.bind(this)
-    })
+    // this.startPicker = flatpickr(this.startDateTarget, {
+    //   altInput: true,
+    //   altFormat: "Y, F j",
+    //   dateFormat: "Y-m-d",
+    //   minDate: "today",
+    //   onChange: this.updateEndDateMin.bind(this)
+    // })
 
-    this.endPicker = flatpickr(this.endDateTarget, {
-      altInput: true,
-      altFormat: "Y, F j",
-      dateFormat: "Y-m-d",
-      minDate: "today"
-    })
+    // this.endPicker = flatpickr(this.endDateTarget, {
+    //   altInput: true,
+    //   altFormat: "Y, F j",
+    //   dateFormat: "Y-m-d",
+    //   minDate: "today"
+    // })
   }
 
   updateEndDateMin(selectedDates) {

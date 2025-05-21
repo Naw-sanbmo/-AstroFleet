@@ -1,6 +1,8 @@
 class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: [:show, :edit, :update, :destroy]
+  # What is this???
   before_action :authenticate_owner!, only: [:new, :create, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   # for the renters
   def index
