@@ -1,5 +1,20 @@
-<div class=container>
-  <!-- show all bookings of the user -->
-  <% @bookings.each do |booking| %>
+<h1>Upcoming Bookings</h1>
+<div class="row">
+  <% if @upcoming_bookings.any? %>
+    <% @upcoming_bookings.each do |booking| %>
+      <%= render partial: "bookings/card", locals: { booking: booking } %>
+    <% end %>
+  <% else %>
+    <p>No upcoming bookings.</p>
+  <% end %>
+</div>
+<h1>Past Bookings</h1>
+<div class="row">
+  <% if @upcoming_bookings.any? %>
+    <% @past_bookings.each do |booking| %>
+      <%= render partial: "bookings/card", locals: { booking: booking } %>
+    <% end %>
+  <% else %>
+    <p>No past bookings.</p>
   <% end %>
 </div>

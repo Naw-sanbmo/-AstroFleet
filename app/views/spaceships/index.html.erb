@@ -1,24 +1,32 @@
 <h1>🚀 Spaceship Showroom</h1>
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-  <div class="flex-grow-1" style="max-width: 400px;">
+
+<div class="d-flex justify-content-center mb-4">
+  <div class="w-100" style="max-width: 400px;">
     <%= form_with url: spaceships_path, method: :get, local: true do |form| %>
-      <%= form.text_field :query, value: params[:query], placeholder: "Search spaceships...", class: "form-control" %>
+      <div class="input-group">
+        <%= form.text_field :query, value: params[:query], placeholder: "Search spaceships...", class: "form-control" %>
+        <button class="btn btn-outline-primary" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
     <% end %>
   </div>
 </div>
 
+
 <% if params[:query].present? %>
-  <div class="mb-3">
+  <div class="px-5 mb-3">
     <p class="text-muted">Results for: "<%= params[:query] %>"</p>
     <%= link_to "Go back to Showroom", spaceships_path, class: "btn btn-outline-secondary btn-sm" %>
   </div>
 <% end %>
 
+
 <% if @spaceships.any? %>
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-    <%= render partial: "spaceships/card", collection: @spaceships, as: :spaceship %>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 px-5">
+    <%= render partial: "partials/card", collection: @spaceships, as: :spaceship %>
   </div>
 <% else %>
-  <p class="text-muted text-center mt-5">🛸 No spaceships available yet.</p>
+  <p class="text-muted text-center mt-5">No spaceships available yet.</p>
 <% end %>

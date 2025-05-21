@@ -1,0 +1,10 @@
+<div class="card-spaceship mb-3 p-3 col-4">
+  <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, class: "rounded-4", style: "width: 200px; object-fit: cover;" %>
+  <div class="card-body">
+    <div class="my-3"><%= booking.status.capitalize %></div>
+    <h5 class="card-title"><%= booking.spaceship.name %></h5>
+    <p class="card-text">
+      <%= booking.start_date %> ~ <%= booking.end_date %>
+    </p>
+  </div>
+</div>
