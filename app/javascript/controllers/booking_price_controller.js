@@ -7,7 +7,7 @@ export default class extends Controller {
 
   update() {
     console.log('changing!');
-    
+
     const pricePerDay = parseInt(this.priceValue, 10);
     // make sure the user has chosen a start date and end date
     if (
@@ -24,7 +24,7 @@ export default class extends Controller {
         this.infoTarget.innerText = `¥${pricePerDay} x ${diffInDays} nights`;
         this.priceTarget.innerHTML = `<span>¥${(
           diffInDays * pricePerDay
-        ).toLocaleString()}</span> <small class='fw-light'>total</small> `;
+        ).toLocaleString()}</span> <small class='fw-light'>Total</small> `;
       } else if (diffInDays === 0) {
         // displays 1-night minimum if end date is same as start date
         this.infoTarget.innerText = "";
