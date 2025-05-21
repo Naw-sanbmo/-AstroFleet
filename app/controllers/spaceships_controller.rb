@@ -11,7 +11,6 @@ class SpaceshipsController < ApplicationController
     end
   end
 
-
   def show
     @booking = Booking.new
   end
