@@ -1,10 +1,9 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :spaceship
-  validates :user_id, :spaceship_id, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  enum status: { pending: "Pending", accepted: "Accepted", rejected: "Rejected" }
+  enum status: { pending: 0, accepted: 1, rejected: 2 }, _default: :pending
 
   scope :past, -> { where('end_date < ?', Date.today) }
   scope :future, -> { where('start_date > ?', Date.today) }
@@ -15,6 +14,8 @@ class Booking < ApplicationRecord
   scope :expired, -> { pending.past }
   scope :completed, -> { accepted.past }
   scope :not_rejected, -> { where.not(status: :rejected) }
+
+  @booking.status = "pending"
 
   def number_of_days
     ( end_date - start_date ).to_i
