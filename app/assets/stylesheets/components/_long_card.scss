@@ -1,0 +1,13 @@
+.long-card {
+  width: 100%;
+  border-radius: 12px;
+  background: #FFF;
+  display: flex;
+  padding: 8px;
+  margin-top: 20px;
+
+  img {
+    width: 200px;
+    margin-right: 24px;
+  }
+}
