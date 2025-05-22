@@ -152,12 +152,6 @@ spaceships.each do |attrs|
     user: owner
   )
 
-  spaceship.photo.attach(
-    io: file,
-    filename: "#{attrs[:name].parameterize}.png",
-    content_type: "image/png"
-  )
-
   spaceship.save
 
   puts "✅ Created #{spaceship.name}"
