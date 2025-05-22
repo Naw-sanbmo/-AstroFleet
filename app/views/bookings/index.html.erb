@@ -1,50 +1,48 @@
-<div style="display: flex; width: 100%;">
-  <!-- Left Column -->
-  <div style="flex: 1; max-width: 25%;">
-    <div style="display: flex; flex-direction: column; align-items: center; padding: 16px;">
-      <%= image_tag 'Death Star', alt: 'Spaceship', style: 'width: 100px; height: 100px; object-fit: cover; border-radius: 50%;' %>
-      <h2 style="margin-top: 16px;">Anakin Skywalker</h2>
-      <p style="text-align: center;">Anakin@starwars.com</p>
-      <hr style="width: 80%; margin: 24px 0; border: none; border-top: 1px solid #ccc;">
-      <h3>Your spaceships</h3>
-      <hr style="width: 80%; margin: 24px 0; border: none; border-top: 1px solid #ccc;">
-      <% @spaceships.each do |spaceship| %>
-        <div style="display: flex; align-items: center; margin-bottom: 12px; width: 100%;">
-          <%= cl_image_tag(spaceship.photo.key, style: 'width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 12px;') %>
-          <span style="font-size: 16px;"><%= spaceship.name %></span>
-        </div>
-      <% end %>
-      <hr style="width: 80%; margin: 24px 0; border: none; border-top: 1px solid #ccc;">
-      <button style="padding: 10px 20px; background-color: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer;">
-        Add a spaceship
-      </button>
-    </div>
-  </div>
-
-  <!-- Right Column -->
-  <div style="flex: 3; max-width: 75%; padding: 24px;">
-    <h1 class="mt-3">Upcoming Bookings</h1>
-    <div class="row mb-3 p-3">
-      <% if @upcoming_bookings.any? %>
-        <% @upcoming_bookings.each do |booking| %>
-          <%= render partial: "bookings/card", locals: { booking: booking } %>
+<div class="container">
+  <div class="row mb-3 p-3">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">My Ship Booking</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Upcoming Bookings</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Past Bookings</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <% if @booking_requests.any? %>
+          <% @booking_requests.each do |booking| %>
+            <%= render partial: "bookings/card", locals: { booking: booking } %>
+          <% end %>
+        <% else %>
+          <p>No booking requests.</p>
         <% end %>
-      <% else %>
-        <p>No upcoming bookings.</p>
-      <% end %>
-    </div>
-
-    <h1 class="mt-3">Past Bookings</h1>
-    <div class="row mb-3 p-3">
-      <% if @past_bookings.any? %>
-        <% @past_bookings.each do |booking| %>
-          <%= render partial: "bookings/card", locals: { booking: booking } %>
+      </div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <% if @upcoming_bookings.any? %>
+          <% @upcoming_bookings.each do |booking| %>
+            <%= render partial: "bookings/card", locals: { booking: booking } %>
+          <% end %>
+        <% else %>
+          <p>No upcoming bookings.</p>
         <% end %>
-      <% else %>
-        <p>No past bookings.</p>
-      <% end %>
+      </div>
     </div>
-
-    <%= link_to "Back to Spaceship Showroom", spaceships_path, class: "btn btn-secondary mt-3" %>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <div class="row mb-3 p-3">
+        <% if @past_bookings.any? %>
+          <% @past_bookings.each do |booking| %>
+            <%= render partial: "bookings/card", locals: { booking: booking } %>
+            <button type="button" class="btn btn-primary">Leave a review</button>
+          <% end %>
+        <% else %>
+          <p>No past bookings.</p>
+        <% end %>
+      </div>
+    </div>
+    <%= link_to "Back to Spaceship Showroom", spaceships_path %>
   </div>
 </div>
