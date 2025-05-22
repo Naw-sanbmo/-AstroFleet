@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :owner do
     resources :spaceships, only: [:edit, :update, :destroy]
-    resources :bookings, only: [:show, :update]
+    resources :bookings, only: [:index, :show, :update]
   end
 
 
