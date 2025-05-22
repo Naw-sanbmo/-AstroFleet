@@ -3,9 +3,9 @@ class BookingsController < ApplicationController
     # TODO: the where statements are not working
     # @upcoming_bookings = current_user.bookings.where("start_date >= ?", Date.current).order(:start_date)
     # @past_bookings = current_user.bookings.where("start_date < ?", Date.current).order(start_date: :desc)
-    @upcoming_bookings = Booking.future
-    @past_bookings = Booking.past
-    @booking_requests = Booking.need_response
+    @upcoming_bookings = Booking.future.where(user: current_user)
+    @past_bookings = Booking.past.where(user: current_user)
+    @booking_requests = current_user.bookings_as_owner
   end
 
   def show

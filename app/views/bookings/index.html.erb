@@ -16,6 +16,7 @@
         <% if @booking_requests.any? %>
           <% @booking_requests.each do |booking| %>
             <%= render partial: "bookings/card", locals: { booking: booking } %>
+            <p><%= booking.user.first_name %></p>
           <% end %>
         <% else %>
           <p>No booking requests.</p>
@@ -25,6 +26,7 @@
         <% if @upcoming_bookings.any? %>
           <% @upcoming_bookings.each do |booking| %>
             <%= render partial: "bookings/card", locals: { booking: booking } %>
+            <p><%= booking.user.first_name %></p>
           <% end %>
         <% else %>
           <p>No upcoming bookings.</p>

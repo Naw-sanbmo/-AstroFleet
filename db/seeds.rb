@@ -13,6 +13,15 @@ owner = User.create!(
   password: "password123"
 )
 
+10.times do |number|
+  User.create!(
+    first_name: "Space",
+    last_name: "Traveler #{number}",
+    email: "spacetraveler#{number}@starfleet.com",
+    password: "password123"
+  )
+end
+
 puts "🚀 Creating spaceships..."
 
 spaceships = [
@@ -22,7 +31,7 @@ spaceships = [
     max_speed: 300_000,
     size: "large",
     features: "Holodeck, Warp drive, Saucer separation, Replicators, Photon torpedoes, Android crew member",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Enterprise_u036lv.jpg",
+    photo: "app/assets/images/Enterprise.jpg",
     description: "Flagship of the United Federation of Planets, equipped with advanced tech and diplomacy skills.",
     rating: 5
   },
@@ -32,7 +41,7 @@ spaceships = [
     max_speed: 24_000,
     size: "mega big",
     features: "Planet-destroying superlaser, Thermal exhaust vent, Droid command center, Tractor beam array",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Death_Star_um6qyo.jpg",
+    photo: "app/assets/images/Death Star.jpg",
     description: "A moon-sized imperial battle station capable of annihilating entire planets.",
     rating: 4
   },
@@ -42,7 +51,7 @@ spaceships = [
     max_speed: 500_000,
     size: "medium",
     features: "Gravity drive, Hull breach mode, Distress beacon, Interdimensional travel, Crew-induced madness",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Event_Horizon_s0tta4.jpg",
+    photo: "app/assets/images/Event Horizon.jpg",
     description: "A terrifying experimental ship that folds space... and minds.",
     rating: 3
   },
@@ -52,94 +61,95 @@ spaceships = [
     max_speed: 153_300,
     size: "medium",
     features: "Towing rig, AI mainframe (MU-TH-UR 6000), Cryosleep pods, Industrial refinery, Xenomorph passenger",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Nostromo_wjlozk.jpg",
+    photo: "app/assets/images/Nostromo.jpg",
     description: "Industrial hauler ship from Weyland-Yutani, haunted by unexpected alien cargo.",
     rating: 4
   },
-  {
-    name: "Eagle 5",
-    price: 28_000,
-    max_speed: 150_000,
-    size: "small",
-    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717590/Eagle_5_bfey5t.webp",
-    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
-    rating: 2
-  },
-  {
-    name: "Tie Interceptor",
-    price: 23_000,
-    max_speed: 180_000,
-    size: "Space Winnebago",
-    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://i.pinimg.com/736x/02/20/b3/0220b306531f5c22b4bc6ca1a3502261.jpg",
-    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
-    rating: 3
-  },
-  {
-    name: "X-wing Starfighter",
-    price: 25_000,
-    max_speed: 350_000,
-    size: "Space Winnebago",
-    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://img.freepik.com/free-photo/view-futuristic-looking-spacecraft_23-2150675563.jpg?semt=ais_hybrid&w=740",
-    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
-    rating: 4
-  },
-  {
-    name: "Razor Crest",
-    price: 40_000,
-    max_speed: 250_000,
-    size: "Space Winnebago",
-    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://cdn.mos.cms.futurecdn.net/eJCVbwUPfV9Mx7sH7bdPRj.jpg",
-    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
-    rating: 5
-  },
-  {
-    name: "Imperial Star Destroyer",
-    price: 30_000,
-    max_speed: 200_000,
-    size: "Space Winnebago",
-    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBHfe3SPdBD2xOEdMfIueRjB8ZuPwGqiDujw&s",
-    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
-    rating: 4
-  },
-  {
-    name: "Starfox Airwing",
-    price: 38_000,
-    max_speed: 250_000,
-    size: "Space Winnebago",
-    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://bookbub-res.cloudinary.com/image/upload/w_1200,h_628,c_fill,g_auto,f_auto,q_auto/v1689780563/blog/the-most-fascinating-spaceships-in-science-fiction-share.jpg",
-    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
-    rating: 4
-  },
-  {
-    name: "Ranger",
-    price: 38_000,
-    max_speed: 280_000,
-    size: "Space Winnebago",
-    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://images.saymedia-content.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTk2ODg5NjQ5OTk2NzAyOTc5/largest-spaceships-science-fiction.jpg",
-    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
-    rating: 5
-  },
-  {
-    name: "Alien Slave Ship",
-    price: 20_000,
-    max_speed: 24_000,
-    size: "Experimental cruiser",
-    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://cdna.artstation.com/p/assets/images/images/033/453/542/large/vitaliy-ostaschenko-renderendevour6.jpg?1609671428",
-    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
-    rating: 4
-  }
+  # {
+  #   name: "Eagle 5",
+  #   price: 28_000,
+  #   max_speed: 150_000,
+  #   size: "small",
+  #   features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+  #   photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717590/Eagle_5_bfey5t.webp",
+  #   description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+  #   rating: 2
+  # },
+  # {
+  #   name: "Tie Interceptor",
+  #   price: 23_000,
+  #   max_speed: 180_000,
+  #   size: "Space Winnebago",
+  #   features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+  #   photo: "https://i.pinimg.com/736x/02/20/b3/0220b306531f5c22b4bc6ca1a3502261.jpg",
+  #   description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+  #   rating: 3
+  # },
+  # {
+  #   name: "X-wing Starfighter",
+  #   price: 25_000,
+  #   max_speed: 350_000,
+  #   size: "Space Winnebago",
+  #   features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+  #   photo: "https://img.freepik.com/free-photo/view-futuristic-looking-spacecraft_23-2150675563.jpg?semt=ais_hybrid&w=740",
+  #   description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+  #   rating: 4
+  # },
+  # {
+  #   name: "Razor Crest",
+  #   price: 40_000,
+  #   max_speed: 250_000,
+  #   size: "Space Winnebago",
+  #   features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+  #   photo: "https://cdn.mos.cms.futurecdn.net/eJCVbwUPfV9Mx7sH7bdPRj.jpg",
+  #   description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+  #   rating: 5
+  # },
+  # {
+  #   name: "Imperial Star Destroyer",
+  #   price: 30_000,
+  #   max_speed: 200_000,
+  #   size: "Space Winnebago",
+  #   features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+  #   photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBHfe3SPdBD2xOEdMfIueRjB8ZuPwGqiDujw&s",
+  #   description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+  #   rating: 4
+  # },
+  # {
+  #   name: "Starfox Airwing",
+  #   price: 38_000,
+  #   max_speed: 250_000,
+  #   size: "Space Winnebago",
+  #   features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+  #   photo: "https://bookbub-res.cloudinary.com/image/upload/w_1200,h_628,c_fill,g_auto,f_auto,q_auto/v1689780563/blog/the-most-fascinating-spaceships-in-science-fiction-share.jpg",
+  #   description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+  #   rating: 4
+  # },
+  # {
+  #   name: "Ranger",
+  #   price: 38_000,
+  #   max_speed: 280_000,
+  #   size: "Space Winnebago",
+  #   features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+  #   photo: "https://images.saymedia-content.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTk2ODg5NjQ5OTk2NzAyOTc5/largest-spaceships-science-fiction.jpg",
+  #   description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+  #   rating: 5
+  # },
+  # {
+  #   name: "Alien Slave Ship",
+  #   price: 20_000,
+  #   max_speed: 24_000,
+  #   size: "Experimental cruiser",
+  #   features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+  #   photo: "https://cdna.artstation.com/p/assets/images/images/033/453/542/large/vitaliy-ostaschenko-renderendevour6.jpg?1609671428",
+  #   description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+  #   rating: 4
+  # }
 ]
 
 spaceships.each do |attrs|
-  file = URI.parse(attrs[:photo]).open
+  # file = URI.parse(attrs[:photo]).open
+  file = File.open(attrs[:photo])
 
   spaceship = Spaceship.new(
     name: attrs[:name],
@@ -149,7 +159,7 @@ spaceships.each do |attrs|
     features: attrs[:features],
     description: attrs[:description],
     rating: attrs[:rating],
-    user: owner
+    user: User.all.sample
   )
 
   spaceship.photo.attach(
@@ -196,13 +206,13 @@ bookings = [
   #   end_date: Date.today + 7,
   #   total_price: 300_000
   # },
-    {
-    spaceship: Spaceship.find_by(name: "Eagle 5"),
-    user: booker,
-    start_date: Date.today - 20,
-    end_date: Date.today - 15,
-    total_price: 28_000
-  },
+  #   {
+  #   spaceship: Spaceship.find_by(name: "Eagle 5"),
+  #   user: booker,
+  #   start_date: Date.today - 20,
+  #   end_date: Date.today - 15,
+  #   total_price: 28_000
+  # },
       {
     spaceship: Spaceship.find_by(name: "Event Horizon"),
     user: booker,
