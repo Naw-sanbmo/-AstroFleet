@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
     # @past_bookings = current_user.bookings.where("start_date < ?", Date.current).order(start_date: :desc)
     @upcoming_bookings = Booking.future
     @past_bookings = Booking.past
+    @booking_requests = Booking.need_response
   end
 
   def show

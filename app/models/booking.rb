@@ -1,10 +1,9 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :spaceship
-  validates :user_id, :spaceship_id, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  enum status: { pending: "Pending", accepted: "Accepted", rejected: "Rejected" }
+  enum status: { pending: 0, accepted: 1, rejected: 2 }, _default: :pending
 
   scope :past, -> { where('end_date < ?', Date.today) }
   scope :future, -> { where('start_date > ?', Date.today) }
