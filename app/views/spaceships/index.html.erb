@@ -1,10 +1,14 @@
-<h1 class="title">Spaceship Showroom</h1>
+<h1 class="text-center">Spaceship Showroom</h1>
+
 
 <div class="d-flex justify-content-center mb-4">
-  <div class="w-100" style="max-width: 400px;">
-    <%= form_with url: spaceships_path, method: :get, local: true do |form| %>
-      <div class="input-group">
-        <%= form.text_field :query, value: params[:query], placeholder: "Search spaceships...", class: "form-control" %>
+  <div class="w-100" style="max-width: 800px;">
+    <%= form_with url: spaceships_path, method: :get, local: true, html: { class: 'input-group' } do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search spaceships...", class: "form-control" %>
+      <%= number_field_tag :budget, params[:budget], placeholder: "Max Budget (₮)", class: "form-control" %>
+      <%= select_tag :size, options_for_select(["small", "medium", "large", "mega big"], selected: params[:size]), prompt: "Size", class: "form-select" %>
+
+      <div class="input-group-append">
         <button class="btn btn-outline-primary" type="submit">
           <i class="fas fa-search"></i>
         </button>
@@ -13,14 +17,17 @@
   </div>
 </div>
 
-
-<% if params[:query].present? %>
+<% if params[:query].present? || params[:budget].present? || params[:size].present? %>
   <div class="px-5 mb-3">
-    <p class="text-muted">Results for: "<%= params[:query] %>"</p>
+    <p class="text-muted">
+      Results
+      <% if params[:query].present? %> for: "<%= params[:query] %>" <% end %>
+      <% if params[:budget].present? %> | Budget ≤ ₮<%= params[:budget] %> <% end %>
+      <% if params[:size].present? %> | Size: <%= params[:size].capitalize %> <% end %>
+    </p>
     <%= link_to "Go back to Showroom", spaceships_path, class: "btn btn-outline-secondary btn-sm" %>
   </div>
 <% end %>
-
 
 <% if @spaceships.any? %>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 px-5">

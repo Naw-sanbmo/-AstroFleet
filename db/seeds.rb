@@ -30,7 +30,7 @@ spaceships = [
     name: "Death Star",
     price: 2_147_483_647,
     max_speed: 24_000,
-    size: "huge",
+    size: "mega big",
     features: "Planet-destroying superlaser, Thermal exhaust vent, Droid command center, Tractor beam array",
     photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Death_Star_um6qyo.jpg",
     description: "A moon-sized imperial battle station capable of annihilating entire planets.",
@@ -40,27 +40,17 @@ spaceships = [
     name: "Event Horizon",
     price: 1_200_000_000,
     max_speed: 500_000,
-    size: "experimental cruiser",
+    size: "medium",
     features: "Gravity drive, Hull breach mode, Distress beacon, Interdimensional travel, Crew-induced madness",
     photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Event_Horizon_s0tta4.jpg",
     description: "A terrifying experimental ship that folds space... and minds.",
     rating: 3
   },
-  # {
-  #   name: "Millennium Falcon",
-  #   price: 15_000_000,
-  #   max_speed: 350_000,
-  #   size: "YT-1300 light freighter",
-  #   features: "Smuggling compartments, Quad laser turrets, Hyperdrive (when it works), Holo-chess table, Kessel Run record",
-  #   photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747807561/Millenium_Falcon_wdifip.jpg",
-  #   description: "Fast, scrappy, and iconic. Beloved by scoundrels and rebels alike.",
-  #   rating: 5
-  # },
   {
     name: "USCSS Nostromo",
     price: 42_000_000,
     max_speed: 153_300,
-    size: "hauler-class",
+    size: "medium",
     features: "Towing rig, AI mainframe (MU-TH-UR 6000), Cryosleep pods, Industrial refinery, Xenomorph passenger",
     photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Nostromo_wjlozk.jpg",
     description: "Industrial hauler ship from Weyland-Yutani, haunted by unexpected alien cargo.",
@@ -70,14 +60,13 @@ spaceships = [
     name: "Eagle 5",
     price: 28_000,
     max_speed: 150_000,
-    size: "Space Winnebago",
+    size: "small",
     features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
     photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717590/Eagle_5_bfey5t.webp",
     description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
     rating: 2
   },
 ]
-
 
 spaceships.each do |attrs|
   file = URI.parse(attrs[:photo]).open
