@@ -1,9 +1,9 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
-  <div class="card-spaceship card mb-4 flex-fill p-3">
+  <div class="card-trip mb-4 flex-fill p-3">
     <div class="card-body text-center">
       <div class="justify-content-center mb-3">
-        <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, class: "rounded-4 d-block mx-auto", style: "height: 150px; object-fit: cover;" %>
-        <div class="my-3"><%= booking.status.capitalize %></div>
+        <%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, class: "rounded-4 d-block mx-auto", style: "height: 150px;  object-fit: cover;" %>
+        <div class="my-3"><%= booking.status %></div>
         <h5 class="card-title"><%= booking.spaceship.name %></h5>
         <p class="card-text">
           <%= booking.start_date %> ~ <%= booking.end_date %><br>
