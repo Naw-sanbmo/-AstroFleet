@@ -6,10 +6,18 @@ class SpaceshipsController < ApplicationController
 
   # for the renters
   def index
+    @spaceships = Spaceship.all
+
     if params[:query].present?
-      @spaceships = Spaceship.where("name ILIKE ?", "%#{params[:query]}%")
-    else
-      @spaceships = Spaceship.all
+      @spaceships = @spaceships.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    if params[:budget].present? && params[:budget].to_i > 0
+      @spaceships = @spaceships.where("price <= ?", params[:budget].to_i)
+    end
+
+    if params[:size].present?
+      @spaceships = @spaceships.where(size: params[:size])
     end
   end
 
