@@ -15,8 +15,6 @@ class Booking < ApplicationRecord
   scope :completed, -> { accepted.past }
   scope :not_rejected, -> { where.not(status: :rejected) }
 
-  @booking.status = "pending"
-
   def number_of_days
     ( end_date - start_date ).to_i
   end
