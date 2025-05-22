@@ -1,0 +1,11 @@
+<div class="long-card">
+  <div class="left-side"><%= image_tag booking.spaceship.photo, alt: booking.spaceship.name, class: "rounded-4 d-block", style: "height: 150px;  object-fit: cover;" %></div>
+  <div class="right-side">
+    <div class="my-3"><%= booking.status %></div>
+    <h5 class="card-title"><%= booking.spaceship.name %></h5>
+    <p class="card-text">
+      <%= booking.start_date %> ~ <%= booking.end_date %><br>
+      $ <%= number_with_delimiter(booking.total_price, :delimiter => ',') %>
+    </p>
+  </div>
+</div>
