@@ -1,17 +1,19 @@
-<div data-controller="booking-price" data-booking-price-price-value="<%= @spaceship.price %>" class="mt-5 border p-3 rounded">
+<div data-controller="booking-price" data-booking-price-price-value="<%= @spaceship.price %>" class="mt-3 p-3" style="background-color: #25233E";
+ >
   <!-- Displays price/night on top of form -->
-  <p class='fw-bold fs-3'>¥<%= @spaceship.price %> <small class='fw-light'>per day</small></p>
+  <p class='fw-bold fs-4'>$<%= @spaceship.price %> <small class='fw-light'>per day</small></p>
   <%= simple_form_for [spaceship, booking] do |f| %>
     <div class="">
       <!-- On change of dates, it triggers our update inside of our JS controller -->
-      <%= f.input :start_date, html5: true, input_html: { data: { booking_price_target: 'start_date', action: 'change->booking-price#update' }, min: Date.today } %>
-      <%= f.input :end_date, html5: true, input_html: { data: { booking_price_target: 'end_date', action: 'change->booking-price#update' }, min: Date.today } %>
+      <%= f.input :start_date, html5: true, input_html: { data: { booking_price_target: 'start_date', action: 'change->booking-price#update' }, min: Date.today, style: 'background-color: white; color: black;' }  %>
+      <%= f.input :end_date, html5: true, input_html: { data: { booking_price_target: 'end_date', action: 'change->booking-price#update' }, min: Date.today, style: 'background-color: white; color: black;' } %>
     </div>
     <%= f.submit 'Book Your Spaceship', class: 'btn btn-primary w-100' %>
     <!-- Hidden when no dates chosen, total amount displayed here when changed -->
     <p class='mt-3 d-flex align-items-center justify-content-between'>
       <span data-booking-price-target='info' class="d-none"></span>
-      <span class='fw-bold' data-booking-price-target='price'></span>
+      <span class='fw-bold fs-4' data-booking-price-target='price'></span>
     </p>
   <% end %>
 </div>
+<%# border p-3 rounded %>

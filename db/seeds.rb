@@ -66,6 +66,76 @@ spaceships = [
     description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
     rating: 2
   },
+  {
+    name: "Tie Interceptor",
+    price: 23_000,
+    max_speed: 180_000,
+    size: "Space Winnebago",
+    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+    photo: "https://i.pinimg.com/736x/02/20/b3/0220b306531f5c22b4bc6ca1a3502261.jpg",
+    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+    rating: 3
+  },
+  {
+    name: "X-wing Starfighter",
+    price: 25_000,
+    max_speed: 350_000,
+    size: "Space Winnebago",
+    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+    photo: "https://img.freepik.com/free-photo/view-futuristic-looking-spacecraft_23-2150675563.jpg?semt=ais_hybrid&w=740",
+    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+    rating: 4
+  },
+  {
+    name: "Razor Crest",
+    price: 40_000,
+    max_speed: 250_000,
+    size: "Space Winnebago",
+    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+    photo: "https://cdn.mos.cms.futurecdn.net/eJCVbwUPfV9Mx7sH7bdPRj.jpg",
+    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+    rating: 5
+  },
+  {
+    name: "Imperial Star Destroyer",
+    price: 30_000,
+    max_speed: 200_000,
+    size: "Space Winnebago",
+    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+    photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBHfe3SPdBD2xOEdMfIueRjB8ZuPwGqiDujw&s",
+    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+    rating: 4
+  },
+  {
+    name: "Starfox Airwing",
+    price: 38_000,
+    max_speed: 250_000,
+    size: "Space Winnebago",
+    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+    photo: "https://bookbub-res.cloudinary.com/image/upload/w_1200,h_628,c_fill,g_auto,f_auto,q_auto/v1689780563/blog/the-most-fascinating-spaceships-in-science-fiction-share.jpg",
+    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+    rating: 4
+  },
+  {
+    name: "Ranger",
+    price: 38_000,
+    max_speed: 280_000,
+    size: "Space Winnebago",
+    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+    photo: "https://images.saymedia-content.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTk2ODg5NjQ5OTk2NzAyOTc5/largest-spaceships-science-fiction.jpg",
+    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+    rating: 5
+  },
+  {
+    name: "Alien Slave Ship",
+    price: 20_000,
+    max_speed: 24_000,
+    size: "Experimental cruiser",
+    features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
+    photo: "https://cdna.artstation.com/p/assets/images/images/033/453/542/large/vitaliy-ostaschenko-renderendevour6.jpg?1609671428",
+    description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
+    rating: 4
+  }
 ]
 
 spaceships.each do |attrs|

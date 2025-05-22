@@ -1,15 +1,17 @@
 <div class="container my-4">
-  <div class="mb-4"><%= link_to '<< Spaceship showroom', spaceships_path, class: 'text-decoration-none text-info' %></div>
+  <div class="mb-4"><%= link_to '<< Spaceship showroom', spaceships_path, class: 'text-decoration-none text-white' %></div>
   <div class="row">
-    <div class="card-trip col-8 mb-4 text-black">
-      <img src="https://cdn.mos.cms.futurecdn.net/AKbyqTKUkicsYGx3xwe3HA.jpg" />
+    <div class="card-trip col-8 mb-4 text-white">
+      <div class="img">
+        <%= image_tag @spaceship.photo if @spaceship.photo.attached? %>
+      </div>
       <div class="card-trip-infos">
-        <div style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 600px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
+        <div style="font-family: Arial, sans-serif;">
           <h2 style="margin-top: 0;">Your Spaceship 🛸 ➪ <%= @spaceship.name %></h2>
           <p style="margin-bottom: 12px;"><strong>Feature:</strong> <%= @spaceship.features %></p>
           <p style="margin-bottom: 12px;"><strong>Maximum Speed 🚀 ➪</strong> <%= @spaceship.max_speed %> Km/h</p>
           <p style="margin-bottom: 12px;"><strong>Size 👨🏼‍🚀 ➪</strong> <%= @spaceship.size %></p>
-          <p style="margin-bottom: 12px;"><strong>Price 💵 ➪</strong> <%= @spaceship.price %> $/day</p>
+          <p style="margin-bottom: 12px;"><strong>Price 💵 ➪</strong> $<%= @spaceship.price %> /day</p>
           <p style="margin-bottom: 12px;"><strong>Rating:</strong> <%= '⭐️' * @spaceship.rating.round %></p>
           <p style="margin-bottom: 12px;"><strong>Description:</strong> <%= @spaceship.description %></p>
         </div>
@@ -20,3 +22,4 @@
     </div>
   </div>
 </div>
+<%# border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 600px; background-color:rgb(8, 5, 5); %>

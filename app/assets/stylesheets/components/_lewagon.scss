@@ -1,13 +1,14 @@
 .card-trip {
   overflow: hidden;
-  background: white;
+  background: rgb(5, 5, 5);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card-trip > img {
+.card-trip img {
   height: 300px;
   width: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .card-trip h2 {
@@ -36,6 +37,7 @@
   right: 16px;
   top: -20px;
   width: 40px;
+  color: white;
 }
 
 .cards {
