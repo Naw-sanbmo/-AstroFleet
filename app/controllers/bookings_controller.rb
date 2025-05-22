@@ -1,8 +1,10 @@
 class BookingsController < ApplicationController
   def index
     # TODO: the where statements are not working
-    @upcoming_bookings = current_user.bookings # .where("start_date >= ?", Date.current).order(:start_date)
-    @past_bookings = current_user.bookings.where("start_date < ?", Date.current).order(start_date: :desc)
+    # @upcoming_bookings = current_user.bookings.where("start_date >= ?", Date.current).order(:start_date)
+    # @past_bookings = current_user.bookings.where("start_date < ?", Date.current).order(start_date: :desc)
+    @upcoming_bookings = Booking.future
+    @past_bookings = Booking.past
   end
 
   def show
