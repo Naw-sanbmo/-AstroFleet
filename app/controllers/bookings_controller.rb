@@ -5,11 +5,8 @@ class BookingsController < ApplicationController
     # @past_bookings = current_user.bookings.where("start_date < ?", Date.current).order(start_date: :desc)
     @upcoming_bookings = Booking.future
     @past_bookings = Booking.past
-
     @spaceships = current_user.spaceships
-
     @booking_requests = Booking.need_response
-
   end
 
   def show
@@ -25,6 +22,15 @@ class BookingsController < ApplicationController
       redirect_to bookings_path
     else
       render "spaceships/show", status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      # redirect_to # up to you...
+    else
+      # render # where was the booking update form?
     end
   end
 
