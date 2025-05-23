@@ -1,21 +1,21 @@
 <div class="container">
-  <div class="row mb-3 p-3">
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-my-ship-booking-tab" data-bs-toggle="pill" data-bs-target="#pills-my-ship-booking" type="button" role="tab" aria-controls="pills-my-ship-booking" aria-selected="true">My Ship Booking</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-upcoming-booking-tab" data-bs-toggle="pill" data-bs-target="#pills-upcoming-booking" type="button" role="tab" aria-controls="pills-upcoming-booking" aria-selected="false">Upcoming Bookings</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Past Bookings</button>
-      </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent" style="display: flex; flex-direction: column; align-items: left; padding: 42px; padding-top: 56px; padding-bottom: 56px; background-color: #25233E; margin-left: 20px; margin-right: 80px; border-radius: 16px; margin-bottom: 32px;">
+  <div class="row mb-3 me-5">
+    <div class="tab-content" id="pills-tabContent" style="display: flex; flex-direction: column; align-items: left; padding: 42px; padding-top: 56px; padding-bottom: 56px; background-color: #25233E; margin-left: 10px; margin-right: 80px; border-radius: 16px; margin-bottom: 32px;">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-my-ship-booking-tab" data-bs-toggle="pill" data-bs-target="#pills-my-ship-booking" type="button" role="tab" aria-controls="pills-my-ship-booking" aria-selected="true">My Ship Booking</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-upcoming-booking-tab" data-bs-toggle="pill" data-bs-target="#pills-upcoming-booking" type="button" role="tab" aria-controls="pills-upcoming-booking" aria-selected="false">Upcoming Bookings</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Past Bookings</button>
+        </li>
+      </ul>
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-my-ship-booking-tab">
         <% if @booking_requests.any? %>
           <% @booking_requests.each do |booking| %>
-            <%= render partial: "bookings/card", locals: { booking: booking } %>
+            <%= render "owner/bookings/card", booking: booking %>
             <!-- ref. Doug's blog -->
             <div class="d-flex">
               <%= simple_form_for booking do |f| %>

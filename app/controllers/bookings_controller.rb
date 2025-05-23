@@ -7,7 +7,8 @@ class BookingsController < ApplicationController
     @past_bookings = Booking.past
     @spaceships = current_user.spaceships
     @booking_requests = Booking.need_response
-
+    @review = Review.new
+    @bookings = current_user.bookings_as_owner
   end
 
   def show

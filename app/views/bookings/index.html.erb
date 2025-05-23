@@ -1,10 +1,22 @@
-<div style="display: flex; width: 100%;">
+<div style="display: flex; width: 100%; margin-top: 80px;">
   <div style="flex: 1; max-width: 25%;">
+    <!-- Left column (1/4 width) -->
     <%= render partial: "owner/bookings/side_bar" %>
-  </div>
-  <div style="flex: 3; max-width: 75%;">
-    <div class="container">
+    <div style="flex: 3; max-width: 75%;">
+      <!-- Right column (3/4 width) -->
       <%= render partial: "bookings/tab" %>
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const showBtn = document.getElementById("show-form-button");
+    const form = document.getElementById("spaceship-form-container");
+    const cancelBtn = document.getElementById("cancel-form-button");
+
+    showBtn.addEventListener("click", function() {
+      form.style.display = "block";
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
