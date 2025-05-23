@@ -45,13 +45,20 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const showBtn = document.getElementById("show-form-button");
+    document.addEventListener("DOMContentLoaded", function() {
+    const showBtn = document.querySelector("#show-form-button");
     const form = document.getElementById("spaceship-form-container");
+    const wrapper = document.getElementById("spaceship-form-wrapper");
     const cancelBtn = document.getElementById("cancel-form-button");
+    console.log(showBtn);
+    console.log(form);
+
 
     showBtn.addEventListener("click", function() {
+      console.log("clicked");
+
       form.style.display = "block";
+      wrapper.style.display = "block";
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
@@ -63,4 +70,3 @@
   });
 
 </script>
-
