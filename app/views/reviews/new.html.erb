@@ -1,8 +1,9 @@
-<div>
+<div class="container-relative">
   <h2>Write a Review for <%= @spaceship.name %></h2>
   <div>
+    <%= button_to '<< Back to Spaceship showroom', spaceships_path, method: :get, class: "btn btn-primary showroom-btn" %>
     <%= simple_form_for [@spaceship, @review] do |f| %>
-      <%= f.input :content%>
+      <%= f.input :content %>
       <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
       <%= f.submit "Submit review", class: 'btn btn-primary mt-3' %>
     <% end %>
