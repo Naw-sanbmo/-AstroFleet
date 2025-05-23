@@ -6,7 +6,7 @@ class SpaceshipsController < ApplicationController
 
   # for the renters
   def index
-    @spaceships = Spaceship.all
+    @spaceships = Spaceship.where.not(user: current_user)
 
     if params[:query].present?
       @spaceships = @spaceships.where("name ILIKE ?", "%#{params[:query]}%")

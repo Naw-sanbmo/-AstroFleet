@@ -13,6 +13,15 @@ owner = User.create!(
   password: "password123"
 )
 
+10.times do |number|
+  User.create!(
+    first_name: "Space",
+    last_name: "Traveler #{number}",
+    email: "spacetraveler#{number}@starfleet.com",
+    password: "password123"
+  )
+end
+
 puts "🚀 Creating spaceships..."
 
 spaceships = [
@@ -52,7 +61,7 @@ spaceships = [
     max_speed: 153_300,
     size: "medium",
     features: "Towing rig, AI mainframe (MU-TH-UR 6000), Cryosleep pods, Industrial refinery, Xenomorph passenger",
-    photo: "https://alienseries.wordpress.com/wp-content/uploads/2012/10/zlpr3.jpg",
+    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Nostromo_wjlozk.jpg",
     description: "Industrial hauler ship from Weyland-Yutani, haunted by unexpected alien cargo.",
     rating: 4
   },
@@ -142,6 +151,7 @@ spaceships.each do |attrs|
   p attrs[:photo]
   file = URI.parse(attrs[:photo]).open
 
+
   spaceship = Spaceship.new(
     name: attrs[:name],
     price: attrs[:price],
@@ -150,7 +160,7 @@ spaceships.each do |attrs|
     features: attrs[:features],
     description: attrs[:description],
     rating: attrs[:rating],
-    user: owner
+    user: User.all.sample
   )
 
   spaceship.photo.attach(io: file, filename: "#{attrs[:name]}.png", content_type: "image/png")
@@ -186,7 +196,7 @@ bookings = [
     end_date: Date.today + 12,
     total_price: 1_000_000
   },
-  {
+ {
     spaceship: Spaceship.all.sample,
     user: booker,
     start_date: Date.today + 3,
@@ -200,6 +210,7 @@ bookings = [
     end_date: Date.today - 15,
     total_price: 28_000
   },
+
       {
     spaceship: Spaceship.all.sample,
     user: booker,

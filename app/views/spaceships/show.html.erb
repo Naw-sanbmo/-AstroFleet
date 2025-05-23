@@ -9,6 +9,7 @@
         <div style="font-family: Arial, sans-serif;">
           <h2 style="margin-bottom: 12px;">Your Spaceship 🛸 ➪ <%= @spaceship.name %></h2>
           <p style="margin-bottom: 12px;"><strong>Feature:</strong> <%= @spaceship.features %></p>
+          <p style="margin-bottom: 12px;"><strong>Owner:</strong> <%= @spaceship.user.first_name %> <%= @spaceship.user.last_name %></p>
           <p style="margin-bottom: 12px;"><strong>Maximum Speed 🚀 ➪</strong> <%= @spaceship.max_speed %> Km/h</p>
           <p style="margin-bottom: 12px;"><strong>Size 👨🏼‍🚀 ➪</strong> <%= @spaceship.size %></p>
           <p style="margin-bottom: 12px;"><strong>Price 💵 ➪</strong> $<%= @spaceship.price %> /day</p>
