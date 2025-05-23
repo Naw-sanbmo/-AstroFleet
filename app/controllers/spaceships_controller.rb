@@ -41,7 +41,6 @@ class SpaceshipsController < ApplicationController
     end
   end
 
-
   def edit
     redirect_to root_path unless @spaceship.user == current_user
   end
