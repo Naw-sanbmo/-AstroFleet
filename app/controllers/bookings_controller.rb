@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
     @spaceships = current_user.spaceships
 
     @booking_requests = Booking.need_response
+    @review = Review.new
 
   end
 
