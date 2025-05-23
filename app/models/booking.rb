@@ -14,6 +14,8 @@ class Booking < ApplicationRecord
   scope :expired, -> { pending.past }
   scope :completed, -> { accepted.past }
   scope :not_rejected, -> { where.not(status: :rejected) }
+  scope :not_pending, -> { where.not(status: :pending) }
+
 
   def number_of_days
     ( end_date - start_date ).to_i
