@@ -1,4 +1,4 @@
-<div class="container my-4">
+<div class="container my-5">
   <div class="mb-4"><%= link_to '<< Spaceship showroom', spaceships_path, class: 'text-decoration-none text-white' %></div>
   <div class="row">
     <div class="card-trip col-7 mb-4 text-white">
@@ -6,14 +6,13 @@
         <%= image_tag @spaceship.photo.attached? ? @spaceship.photo : 'https://streamofconsciousness.co.uk/wp-content/uploads/2023/01/engine-and-power.jpg?w=1568' %>
       </div>
       <div class="card-trip-infos">
-        <div style="font-family: Arial, sans-serif;">
+        <div>
           <h2 style="margin-bottom: 12px;">Your Spaceship 🛸 ➪ <%= @spaceship.name %></h2>
           <p style="margin-bottom: 12px;"><strong>Feature:</strong> <%= @spaceship.features %></p>
           <p style="margin-bottom: 12px;"><strong>Owner:</strong> <%= @spaceship.user.first_name %> <%= @spaceship.user.last_name %></p>
           <p style="margin-bottom: 12px;"><strong>Maximum Speed 🚀 ➪</strong> <%= @spaceship.max_speed %> Km/h</p>
           <p style="margin-bottom: 12px;"><strong>Size 👨🏼‍🚀 ➪</strong> <%= @spaceship.size %></p>
-          <p style="margin-bottom: 12px;"><strong>Price 💵 ➪</strong> $<%= @spaceship.price %> /day</p>
-          <p style="margin-bottom: 12px;"><strong>Rating:</strong> <%= '⭐️' * @spaceship.rating.round %></p>
+          <p style="margin-bottom: 12px;"><strong>Price 💵 ➪</strong> $<%= number_with_delimiter(@spaceship.price) %> /day</p>
           <p style="margin-bottom: 12px;"><strong>Description:</strong> <%= @spaceship.description %></p>
         </div>
       </div>
@@ -23,5 +22,26 @@
     </div>
   </div>
 </div>
-<%# border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 600px; background-color:rgb(8, 5, 5); %>
-<%# <%= image_tag @spaceship.photo if @spaceship.photo.attached? %>
+<div class="container my-4">
+  <h3 class="text-white">Reviews 📝</h3>
+  <% if @spaceship.reviews.any? %>
+    <div class="row">
+      <% @spaceship.reviews.each do |review| %>
+        <div class="col-md-4 my-4">
+          <div id="<%= dom_id(review) %>" class="card bg-dark text-white h-100 p-3 position-relative">
+            <% if review.user == current_user %>
+              <%= link_to "✖", spaceship_review_path(@spaceship, review),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: "btn btn-sm position-absolute top-0 end-0 m-0" %>
+            <% end %>
+            <p><strong><%= "#{review.user.first_name} #{review.user.last_name}" %> says</strong></p>
+            <p class="text-info"><%= review.content %></p>
+            <p><strong>Rating:</strong> <%= '⭐️' * review.rating %> (<%= review.rating %>/5)</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-white">No reviews yet!</p>
+  <% end %>
+</div>

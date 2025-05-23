@@ -1,7 +1,8 @@
 class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: [:show, :edit, :update, :destroy]
   # What is this???
-  before_action :authenticate_owner!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   # for the renters
@@ -23,6 +24,7 @@ class SpaceshipsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @reviews = Review.all
   end
 
   # for the spaceship owners
@@ -34,11 +36,12 @@ class SpaceshipsController < ApplicationController
     @spaceship = Spaceship.new(spaceship_params)
     @spaceship.user = current_user
     if @spaceship.save
-      redirect_to @spaceship
+      redirect_to owner_bookings_path, notice: "Spaceship successfully created!"
     else
       render :new
     end
   end
+
 
   def edit
     redirect_to root_path unless @spaceship.user == current_user
@@ -68,7 +71,7 @@ class SpaceshipsController < ApplicationController
   end
 
   def spaceship_params
-    params.require(:spaceship).permit(:name, :price, :max_speed, :features, :size)
+    params.require(:spaceship).permit(:name, :price, :max_speed, :features, :size, :photo, :description)
   end
 
   def authenticate_owner!

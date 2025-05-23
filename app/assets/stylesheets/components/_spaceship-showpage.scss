@@ -12,15 +12,15 @@
 }
 
 .card-trip h2 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-trip p {
-  font-size: 16px;
-  opacity: .7;
+  font-size: 17px;
   margin: 0;
+  color:white;
 }
 
 
@@ -29,13 +29,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  color: rgb(255, 255, 255)
 }
 
 .card-trip-infos .card-trip-user{
   right: 16px;
   top: -20px;
   width: 40px;
-  color: white;
+  // color: rgb(255, 255, 255);
 }
 
 .cards {
