@@ -24,6 +24,7 @@ class SpaceshipsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @reviews = Review.all
   end
 
   # for the spaceship owners

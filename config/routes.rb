@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :spaceships, only: [:index, :show, :new, :create] do
     resources :bookings, only: [:create]
+    resources :reviews, only: [:new, :create, :destroy]
   end
 
   namespace :owner do
