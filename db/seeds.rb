@@ -161,7 +161,7 @@ spaceships.each do |attrs|
     features: attrs[:features],
     description: attrs[:description],
     rating: attrs[:rating],
-    user: User.all.sample
+    user: owner
   )
 
   spaceship.photo.attach(io: file, filename: "#{attrs[:name]}.png", content_type: "image/png")
