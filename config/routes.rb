@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-  resources :bookings, only: [:index, :show]
+  resources :bookings, only: [:index, :show, :update]
 
 end
