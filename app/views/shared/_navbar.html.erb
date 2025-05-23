@@ -10,6 +10,9 @@
       <ul class="navbar-nav me-auto gap-5" >
         <% if user_signed_in? %>
           <li class="nav-item">
+            <%= link_to "Bookings",  bookings_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Booking Manager",  owner_bookings_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
