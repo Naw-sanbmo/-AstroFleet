@@ -13,7 +13,7 @@
           <p style="margin-bottom: 12px;"><strong>Maximum Speed 🚀 ➪</strong> <%= @spaceship.max_speed %> Km/h</p>
           <p style="margin-bottom: 12px;"><strong>Size 👨🏼‍🚀 ➪</strong> <%= @spaceship.size %></p>
           <p style="margin-bottom: 12px;"><strong>Price 💵 ➪</strong> $<%= @spaceship.price %> /day</p>
-          <p style="margin-bottom: 12px;"><strong>Rating:</strong> <%= '⭐️' * @spaceship.rating.round %></p>
+          <p style="margin-bottom: 12px;"><strong>Rating:</strong> <%= '⭐️' * @spaceship.rating.to_i %></p>
           <p style="margin-bottom: 12px;"><strong>Description:</strong> <%= @spaceship.description %></p>
         </div>
       </div>
@@ -23,5 +23,3 @@
     </div>
   </div>
 </div>
-<%# border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 600px; background-color:rgb(8, 5, 5); %>
-<%# <%= image_tag @spaceship.photo if @spaceship.photo.attached? %>
