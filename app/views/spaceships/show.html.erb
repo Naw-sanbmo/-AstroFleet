@@ -1,4 +1,3 @@
-
 <div class="container my-4">
   <div class="mb-4"><%= link_to '<< Spaceship showroom', spaceships_path, class: 'text-decoration-none text-white' %></div>
   <div class="row">
@@ -13,7 +12,7 @@
           <p style="margin-bottom: 12px;"><strong>Owner:</strong> <%= @spaceship.user.first_name %> <%= @spaceship.user.last_name %></p>
           <p style="margin-bottom: 12px;"><strong>Maximum Speed 🚀 ➪</strong> <%= @spaceship.max_speed %> Km/h</p>
           <p style="margin-bottom: 12px;"><strong>Size 👨🏼‍🚀 ➪</strong> <%= @spaceship.size %></p>
-          <p style="margin-bottom: 12px;"><strong>Price 💵 ➪</strong> $<%= @spaceship.price %> /day</p>
+          <p style="margin-bottom: 12px;"><strong>Price 💵 ➪</strong> $<%= number_with_delimiter(@spaceship.price) %> /day</p>
           <p style="margin-bottom: 12px;"><strong>Description:</strong> <%= @spaceship.description %></p>
         </div>
       </div>
@@ -37,7 +36,7 @@
               class: "btn btn-sm position-absolute top-0 end-0 m-0" %>
             <% end %>
             <p><strong><%= "#{review.user.first_name} #{review.user.last_name}" %> says</strong></p>
-            <p><%= review.content %></p>
+            <p class="text-info"><%= review.content %></p>
             <p><strong>Rating:</strong> <%= '⭐️' * review.rating %> (<%= review.rating %>/5)</p>
           </div>
         </div>

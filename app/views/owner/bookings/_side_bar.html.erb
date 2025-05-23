@@ -1,3 +1,4 @@
+
 <!-- Copied from owner/bookings/index.html.erb -->
 <div style="display: flex; flex-direction: column; align-items: center; padding: 16px; padding-top: 56px; padding-bottom: 56px; background-color: #25233E; margin-left: 80px; margin-right: 20px; border-radius: 16px; margin-bottom: 32px; height:90vh; position: sticky; top: 42px;" >
   <%= image_tag 'user_thumbnail', alt: 'Spaceship', style: 'width: 100px; height: 100px; object-fit: cover; border-radius: 50%;' %>
@@ -6,9 +7,12 @@
   <hr style="width: 95%; margin: 8px 0; border: none; border-top: 1px solid #ccc;">
   <p style="text-align: left; margin-bottom: 0px; width: 95%">Your spaceships</p>
   <hr style="width: 95%; margin: 8px 0; border: none; border-top: 1px solid #ccc;">
+
   <% @spaceships.each do |spaceship| %>
-    <div style="display: flex; align-items: center; margin-bottom: 12px; width: 100%">
-      <%= cl_image_tag(spaceship.photo.key, style: 'width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 12px;') %>
+    <div style="display: flex; align-items: center; margin-bottom: 12px; width: 100%;">
+      <% if spaceship.photo.attached? %>
+        <%= cl_image_tag(spaceship.photo.key, style: 'width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 12px;') %>
+      <% end %>
       <span style="font-size: 16px;"><%= spaceship.name %></span>
     </div>
   <% end %>

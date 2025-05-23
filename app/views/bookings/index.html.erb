@@ -18,5 +18,11 @@
       form.style.display = "block";
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  }
+
+    if (cancelBtn) {
+      cancelBtn.addEventListener("click", function() {
+        form.style.display = "none";
+      });
+    }
+  });
 </script>
