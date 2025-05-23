@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <div class="mb-4"><%= link_to '<< Spaceship showroom', spaceships_path, class: 'text-decoration-none text-white' %></div>
+  <%= button_to '<< Back to Spaceship showroom', spaceships_path, method: :get, class: "btn btn-primary showroom-btn" %>
   <div class="row">
     <div class="card-trip col-7 mb-4 text-white">
       <div class="img">
@@ -24,6 +24,7 @@
 </div>
 <div class="container my-4">
   <h3 class="text-white">Reviews 📝</h3>
+  <%= link_to '>>Add your review<<', new_spaceship_review_path(@spaceship), class: 'btn btn-primary' %>
   <% if @spaceship.reviews.any? %>
     <div class="row">
       <% @spaceship.reviews.each do |review| %>
