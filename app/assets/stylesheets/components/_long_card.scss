@@ -1,0 +1,14 @@
+.long-card {
+  width: 100%;
+  border-radius: 12px;
+  background: #FFF;
+  display: flex;
+  padding: 8px;
+  margin-top: 20px;
+  color: #000; // Add this line
+
+  img {
+    width: 200px;
+    margin-right: 24px;
+  }
+}
