@@ -46,6 +46,7 @@
           <% @past_bookings.each do |booking| %>
             <%= render partial: "bookings/card", locals: { booking: booking } %>
             <button type="button" class="btn btn-primary">Leave a review</button>
+            <%= link_to "Leave a review", new_spaceship_review_path(spaceship) %>
           <% end %>
         <% else %>
           <p>No past bookings.</p>
