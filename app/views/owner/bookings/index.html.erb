@@ -1,49 +1,13 @@
-<div style="display: flex; width: 100%;">
+<div style="display: flex; width: 100%; margin-top: 80px;">
   <div style="flex: 1; max-width: 25%;">
-
-    <div style="display: flex; flex-direction: column; align-items: center; padding: 16px; padding-top: 56px; padding-bottom: 56px; background-color: #25233E; margin-left: 80px; margin-right: 20px; border-radius: 16px; margin-bottom: 32px;">
-      <%= image_tag 'user_thumbnail', alt: 'Spaceship', style: 'width: 100px; height: 100px; object-fit: cover; border-radius: 50%;' %>
-      <h2 style="margin-top: 16px;"><%= "#{current_user.first_name} #{current_user.last_name}" %></h2>
-      <p style="text-align: center;"><%= current_user.email %></p>
-
-      <hr style="width: 90%; margin: 8px 0; border: none; border-top: 1px solid #ccc;">
-      <p style="text-align: left;">your spaceships</p>
-      <hr style="width: 90%; margin: 8px 0; border: none; border-top: 1px solid #ccc;">
-
-      <% @spaceships.each do |spaceship| %>
-        <div style="display: flex; align-items: center; margin-bottom: 12px; width: 100%">
-          <% if spaceship.photo.attached? %>
-            <%= cl_image_tag(spaceship.photo.key, style: 'width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 12px;') %>
-          <% end %>
-          <span style="font-size: 16px;"><%= spaceship.name %></span>
-        </div>
-      <% end %>
-
-      <hr style="width: 90%; margin: 8px 0; border: none; border-top: 1px solid #ccc;">
-
-      <button id="show-form-button" style="padding: 10px 50px; background-color: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer;">
-        Add a spaceship
-      </button>
-    </div>
-  </div>
-
-  <div style="flex: 3; max-width: 75%;">
-
-    <div style="display: flex; flex-direction: column; align-items: flex-start; padding: 42px; padding-top: 56px; padding-bottom: 56px; background-color: #25233E; margin-left: 20px; margin-right: 80px; border-radius: 16px; margin-bottom: 32px;">
-
-      <div id="spaceship-form-container" style="display: none; width: 100%; margin-bottom: 32px;">
-        <div style="max-width: 600px; width: 100%; margin: 0 auto;">
-          <%= render partial: "owner/bookings/new_spaceship_form", locals: { spaceship: Spaceship.new } %>
-        </div>
-      </div>
-
-      <% @bookings.each do |booking| %>
-        <%= render "owner/bookings/card", booking: booking %>
-      <% end %>
+    <!-- Left column (1/4 width) -->
+    <%= render partial: "owner/bookings/side_bar" %>
+    <div style="flex: 3; max-width: 75%;">
+      <!-- Right column (3/4 width) -->
+      <%= render partial: "bookings/tab" %>
     </div>
   </div>
 </div>
-
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const showBtn = document.getElementById("show-form-button");
@@ -54,13 +18,5 @@
       form.style.display = "block";
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    if (cancelBtn) {
-      cancelBtn.addEventListener("click", function() {
-        form.style.display = "none";
-      });
-    }
-  });
-
+  }
 </script>
-

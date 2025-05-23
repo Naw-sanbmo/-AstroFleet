@@ -6,11 +6,9 @@ class BookingsController < ApplicationController
     @upcoming_bookings = current_user.bookings.future
     @past_bookings = current_user.bookings.past.not_pending
     @spaceships = current_user.spaceships
-
     @booking_requests = current_user.bookings_as_owner.future
     @review = Review.new
-
-
+    @bookings = current_user.bookings_as_owner
   end
 
   def show
