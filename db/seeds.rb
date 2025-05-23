@@ -13,6 +13,15 @@ owner = User.create!(
   password: "password123"
 )
 
+10.times do |number|
+  User.create!(
+    first_name: "Space",
+    last_name: "Traveler #{number}",
+    email: "spacetraveler#{number}@starfleet.com",
+    password: "password123"
+  )
+end
+
 puts "🚀 Creating spaceships..."
 
 spaceships = [
@@ -22,7 +31,7 @@ spaceships = [
     max_speed: 300_000,
     size: "large",
     features: "Holodeck, Warp drive, Saucer separation, Replicators, Photon torpedoes, Android crew member",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Enterprise_u036lv.jpg",
+    photo: "https://startrekfleetcommand.com/wp-content/uploads/2021/05/TNG_LoadingScreen03.png",
     description: "Flagship of the United Federation of Planets, equipped with advanced tech and diplomacy skills.",
     rating: 5
   },
@@ -32,7 +41,7 @@ spaceships = [
     max_speed: 24_000,
     size: "mega big",
     features: "Planet-destroying superlaser, Thermal exhaust vent, Droid command center, Tractor beam array",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Death_Star_um6qyo.jpg",
+    photo: "https://www.stickyminds.com/sites/default/files/article/2014/death-star.jpg",
     description: "A moon-sized imperial battle station capable of annihilating entire planets.",
     rating: 4
   },
@@ -42,27 +51,28 @@ spaceships = [
     max_speed: 500_000,
     size: "medium",
     features: "Gravity drive, Hull breach mode, Distress beacon, Interdimensional travel, Crew-induced madness",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Event_Horizon_s0tta4.jpg",
+    photo: "https://www.giantfreakinrobot.com/wp-content/uploads/2020/02/event-horizon-900x522.jpg",
     description: "A terrifying experimental ship that folds space... and minds.",
     rating: 3
   },
-  {
-    name: "USCSS Nostromo",
-    price: 42_000_000,
-    max_speed: 153_300,
-    size: "medium",
-    features: "Towing rig, AI mainframe (MU-TH-UR 6000), Cryosleep pods, Industrial refinery, Xenomorph passenger",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Nostromo_wjlozk.jpg",
-    description: "Industrial hauler ship from Weyland-Yutani, haunted by unexpected alien cargo.",
-    rating: 4
-  },
+  # URL didn't work
+  # {
+  #   name: "USCSS Nostromo",
+  #   price: 42_000_000,
+  #   max_speed: 153_300,
+  #   size: "medium",
+  #   features: "Towing rig, AI mainframe (MU-TH-UR 6000), Cryosleep pods, Industrial refinery, Xenomorph passenger",
+  #   photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Nostromo_wjlozk.jpg",
+  #   description: "Industrial hauler ship from Weyland-Yutani, haunted by unexpected alien cargo.",
+  #   rating: 4
+  # },
   {
     name: "Eagle 5",
     price: 28_000,
     max_speed: 150_000,
     size: "small",
     features: "Wings, Radar dish, Lone Starr’s piloting, Barf-proof upholstery, Coffee machine, Mega-maid escape capability",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717590/Eagle_5_bfey5t.webp",
+    photo: "https://wallpapers.com/images/hd/spaceballs-dg4gamkof51ci5c6.jpg",
     description: "A Winnebago in space. Surprisingly durable, endlessly meme-worthy.",
     rating: 2
   },
@@ -139,7 +149,9 @@ spaceships = [
 ]
 
 spaceships.each do |attrs|
+  p attrs[:photo]
   file = URI.parse(attrs[:photo]).open
+
 
   spaceship = Spaceship.new(
     name: attrs[:name],
@@ -149,8 +161,10 @@ spaceships.each do |attrs|
     features: attrs[:features],
     description: attrs[:description],
     rating: attrs[:rating],
-    user: owner
+    user: User.all.sample
   )
+
+  spaceship.photo.attach(io: file, filename: "#{attrs[:name]}.png", content_type: "image/png")
 
   spaceship.save
 
@@ -170,35 +184,36 @@ booker = User.create!(
 
 bookings = [
   {
-    spaceship: Spaceship.find_by(name: "Enterprise"),
+    spaceship: Spaceship.all.sample,
     user: booker,
     start_date: Date.today + 1,
     end_date: Date.today + 5,
     total_price: 200_000
   },
   {
-    spaceship: Spaceship.find_by(name: "Death Star"),
+    spaceship: Spaceship.all.sample,
     user: booker,
     start_date: Date.today + 10,
     end_date: Date.today + 12,
     total_price: 1_000_000
   },
-  # {
-  #   spaceship: Spaceship.find_by(name: "Millennium Falcon"),
-  #   user: booker,
-  #   start_date: Date.today + 3,
-  #   end_date: Date.today + 7,
-  #   total_price: 300_000
-  # },
+ {
+    spaceship: Spaceship.all.sample,
+    user: booker,
+    start_date: Date.today + 3,
+    end_date: Date.today + 7,
+    total_price: 300_000
+  },
     {
-    spaceship: Spaceship.find_by(name: "Eagle 5"),
+    spaceship: Spaceship.all.sample,
     user: booker,
     start_date: Date.today - 20,
     end_date: Date.today - 15,
     total_price: 28_000
   },
+
       {
-    spaceship: Spaceship.find_by(name: "Event Horizon"),
+    spaceship: Spaceship.all.sample,
     user: booker,
     start_date: Date.today - 98,
     end_date: Date.today - 94,
