@@ -1,13 +1,13 @@
 <div class="container my-4">
   <div class="mb-4"><%= link_to '<< Spaceship showroom', spaceships_path, class: 'text-decoration-none text-white' %></div>
   <div class="row">
-    <div class="card-trip col-8 mb-4 text-white">
+    <div class="card-trip col-7 mb-4 text-white">
       <div class="img">
-        <%= image_tag @spaceship.photo if @spaceship.photo.attached? %>
+        <%= image_tag @spaceship.photo.attached? ? @spaceship.photo : 'https://streamofconsciousness.co.uk/wp-content/uploads/2023/01/engine-and-power.jpg?w=1568' %>
       </div>
       <div class="card-trip-infos">
         <div style="font-family: Arial, sans-serif;">
-          <h2 style="margin-top: 0;">Your Spaceship 🛸 ➪ <%= @spaceship.name %></h2>
+          <h2 style="margin-bottom: 12px;">Your Spaceship 🛸 ➪ <%= @spaceship.name %></h2>
           <p style="margin-bottom: 12px;"><strong>Feature:</strong> <%= @spaceship.features %></p>
           <p style="margin-bottom: 12px;"><strong>Owner:</strong> <%= @spaceship.user.first_name %> <%= @spaceship.user.last_name %></p>
           <p style="margin-bottom: 12px;"><strong>Maximum Speed 🚀 ➪</strong> <%= @spaceship.max_speed %> Km/h</p>
@@ -24,3 +24,4 @@
   </div>
 </div>
 <%# border: 1px solid #ccc; padding: 20px; border-radius: 8px; max-width: 600px; background-color:rgb(8, 5, 5); %>
+<%# <%= image_tag @spaceship.photo if @spaceship.photo.attached? %>
