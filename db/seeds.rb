@@ -55,16 +55,17 @@ spaceships = [
     description: "A terrifying experimental ship that folds space... and minds.",
     rating: 3
   },
-  {
-    name: "USCSS Nostromo",
-    price: 42_000_000,
-    max_speed: 153_300,
-    size: "medium",
-    features: "Towing rig, AI mainframe (MU-TH-UR 6000), Cryosleep pods, Industrial refinery, Xenomorph passenger",
-    photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Nostromo_wjlozk.jpg",
-    description: "Industrial hauler ship from Weyland-Yutani, haunted by unexpected alien cargo.",
-    rating: 4
-  },
+  # URL didn't work
+  # {
+  #   name: "USCSS Nostromo",
+  #   price: 42_000_000,
+  #   max_speed: 153_300,
+  #   size: "medium",
+  #   features: "Towing rig, AI mainframe (MU-TH-UR 6000), Cryosleep pods, Industrial refinery, Xenomorph passenger",
+  #   photo: "https://res.cloudinary.com/dhzfni0by/image/upload/v1747717591/Nostromo_wjlozk.jpg",
+  #   description: "Industrial hauler ship from Weyland-Yutani, haunted by unexpected alien cargo.",
+  #   rating: 4
+  # },
   {
     name: "Eagle 5",
     price: 28_000,
